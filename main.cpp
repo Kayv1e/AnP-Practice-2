@@ -27,7 +27,12 @@ int** make(int r, int c)
 {
   int** mtx = new int*[r];
   for (size_t i = 0; i < r; ++i) {
-    mtx[i] = new int[c];
+    try {
+      mtx[i] = new int[c];
+    } catch (...) {
+      rm(mtx, i);
+      throw;
+    }
   }
   return mtx;
 }
