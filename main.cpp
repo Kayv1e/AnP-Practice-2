@@ -21,6 +21,10 @@ int main()
     return 2;
   }
   input(mtx, rows, cols);
+  if (std::cin.fail()) {
+    rm(mtx, rows);
+    return 1;
+  }
   output(mtx, rows, cols);
   rm(mtx, rows);
 }
@@ -39,7 +43,7 @@ int** make(int r, int c)
   return mtx;
 }
 
-void output(int** mtx, int r, int c)
+void output(const int* const* mtx, int r, int c)
 {
   for (size_t i = 0; i < r; ++i) {
     for (size_t j = 0; j < c; ++j) {
