@@ -1,4 +1,5 @@
 #include <iostream>
+#include <new>
 
 int **make(int r, int c);
 void output(const int* const* mtx);
@@ -13,7 +14,11 @@ int main()
     return 1;
   }
   int** mtx = nullptr;
-  mtx = make(rows, cols);
+  try {
+    mtx = make(rows, cols);
+  } catch (const std::bad_alloc&) {
+    return 2;
+  }
   output(mtx);
   rm(mtx, rows);
 }
