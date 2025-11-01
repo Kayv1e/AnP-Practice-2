@@ -17,3 +17,11 @@ int main()
   output(mtx);
   rm(mtx, rows);
 }
+
+void rm(int** mtx, int r)
+{
+  for (size_t i = 0; i < r; ++i) {
+    delete[] mtx[i];
+  }
+  delete[] mtx;
+}
